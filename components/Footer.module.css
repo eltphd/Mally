@@ -1,0 +1,39 @@
+.footer {
+  background: var(--navy-deep);
+  padding: 28px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-playfair), serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.logoAccent {
+  color: var(--gold);
+}
+
+.copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.links a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}

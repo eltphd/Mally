@@ -1,0 +1,96 @@
+.about {
+  background: var(--cream);
+  padding: 100px 64px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: var(--font-playfair), serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.body {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+.body strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.creds {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.credItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.credDot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.credText {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.badge {
+  background: var(--navy);
+  padding: 48px 40px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.badgeInitials {
+  font-family: var(--font-playfair), serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.badgeTitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.badgeSub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+  font-style: italic;
+}

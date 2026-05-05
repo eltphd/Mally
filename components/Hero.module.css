@@ -1,0 +1,131 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 68px;
+}
+
+.left {
+  background: var(--navy);
+  padding: 100px 72px 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.headline {
+  font-family: var(--font-playfair), serif;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.headline em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.body {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 48px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.btnPrimary {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.btnPrimary:hover {
+  background: var(--gold-light);
+}
+
+.btnGhost {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btnGhost:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.right {
+  background: var(--cream);
+  padding: 100px 64px 80px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.statRow {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 32px;
+}
+
+.statRowLast {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.statNumber {
+  font-family: var(--font-playfair), serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statNumber sup {
+  font-size: 28px;
+  vertical-align: super;
+  color: var(--gold);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.statSource {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 6px;
+  font-style: italic;
+}
