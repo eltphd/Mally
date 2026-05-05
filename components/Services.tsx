@@ -22,7 +22,7 @@ const services = [
   {
     num: '04',
     name: 'Strategic Consultation',
-    desc: "Program design, evaluation strategy, logic model development. We think with you — about what you're trying to prove, what you're measuring, and how to structure your work so the evidence builds naturally. This is the conversation most evaluation firms skip.",
+    desc: "Program design, evaluation strategy, logic model development. We think with you — about what you're trying to prove, what you're measuring, and how to structure your work so the evidence builds naturally. This is the conversation most evaluation firms skip. We turn validated research and real-world needs into working systems, not abstract theory.",
     tag: 'Logic Models · Program Design · Strategy',
   },
 ];
