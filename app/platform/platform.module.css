@@ -1,13 +1,302 @@
+/* ─── Page shell ─── */
 .page {
-  min-height: 100vh;
+  padding-top: 68px; /* nav height */
   background: var(--warm-white);
+}
+
+/* ─── Mockup hero ─── */
+.mockupSection {
+  background: var(--navy-deep);
+  padding: 64px 64px 0;
+  overflow: hidden;
+}
+
+.mockupWrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Browser frame */
+.browser {
+  background: #1a2740;
+  border-radius: 10px 10px 0 0;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 32px 80px rgba(0,0,0,0.55);
+  overflow: hidden;
+}
+
+.browserBar {
+  background: #0f1824;
+  height: 36px;
   display: flex;
   align-items: center;
-  padding: 120px 64px 100px;
+  padding: 0 14px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.browserDots {
+  display: flex;
+  gap: 6px;
+}
+
+.browserDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  display: block;
+}
+
+.browserUrl {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-lato), sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.30);
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.browserSpacer {
+  width: 52px;
+}
+
+/* App shell layout */
+.appShell {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  min-height: 340px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #0e1929;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 20px 0;
+}
+
+.sidebarBrand {
+  font-family: var(--font-playfair), serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  padding: 0 16px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+}
+
+.sidebarItem {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 8px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.sidebarItemActive {
+  background: rgba(196,152,44,0.12);
+  color: var(--gold-light);
+}
+
+.sidebarDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* Main area */
+.appMain {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Stat cards */
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.statCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.statN {
+  font-family: var(--font-playfair), serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statNGold {
+  color: var(--gold-light);
+}
+
+.statL {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+}
+
+/* Chart */
+.chartWrap {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+
+.chartLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 14px;
+}
+
+.chartBars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chartRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chartYr {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.25);
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.chartTrack {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chartFill {
+  height: 100%;
+  background: rgba(255,255,255,0.18);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.chartFillGold {
+  background: var(--gold);
+}
+
+.chartVal {
+  font-family: var(--font-lato), sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.25);
+  width: 44px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.chartValGold {
+  color: var(--gold-light);
+}
+
+/* AI insight row */
+.insightRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.insightChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+.insightPulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(196,152,44,0.25);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(196,152,44,0.25); }
+  50%       { box-shadow: 0 0 0 6px rgba(196,152,44,0.08); }
+}
+
+.insightAction {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  cursor: default;
+}
+
+/* ─── Content section ─── */
+.contentSection {
+  background: var(--warm-white);
+  padding: 80px 64px 100px;
 }
 
 .inner {
-  max-width: 720px;
+  max-width: 680px;
 }
 
 .eyebrow {
@@ -21,11 +310,11 @@
 
 .headline {
   font-family: var(--font-playfair), serif;
-  font-size: 38px;
+  font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.28;
   color: var(--navy);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .body {
@@ -78,6 +367,7 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .badge {
@@ -108,8 +398,43 @@
   text-transform: uppercase;
   border-radius: 2px;
   transition: background 0.2s;
+  text-decoration: none;
 }
 
 .cta:hover {
   background: var(--gold-light);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .mockupSection {
+    padding: 48px 32px 0;
+  }
+
+  .appShell {
+    grid-template-columns: 120px 1fr;
+    min-height: 280px;
+  }
+
+  .statN {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mockupSection {
+    padding: 40px 16px 0;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+
+  .contentSection {
+    padding: 56px 24px 72px;
+  }
 }
