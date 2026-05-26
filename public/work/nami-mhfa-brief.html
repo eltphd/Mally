@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MHFA — NAMI Franklin County</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --navy: #14213D;
+  --gold: #FCA311;
+  --gray: #E5E5E5;
+  --muted: #8899bb;
+  --soft: #f4f6fb;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--navy); font-size: 14px; line-height: 1.6; }
+
+.topbar {
+  background: var(--navy);
+  border-top: 3px solid var(--gold);
+  padding: 14px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.topbar span { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase; }
+.topbar span:first-child { color: rgba(255,255,255,0.4); }
+.topbar span:last-child { color: var(--gold); }
+
+.hero {
+  background: var(--navy);
+  padding: 32px 40px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+}
+.hero-h {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 8px;
+}
+.hero-h em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.65; }
+.hero-stats { display: flex; gap: 0; flex-shrink: 0; }
+.hs { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.1); text-align: right; }
+.hs:first-child { border-left: none; padding-left: 0; }
+.hs-n { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: 0; }
+.hs-n .unit { font-size: 18px; font-weight: 700; margin-left: 2px; vertical-align: super; line-height: 0; }
+.hs-l { font-size: 9.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: .09em; margin-top: 2px; }
+
+/* stat strip */
+.strip { background: var(--navy); padding: 3px 40px 16px; display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.sc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 16px; }
+.sc-n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: 0; margin-bottom: 4px; }
+.sc-l { font-size: 10.5px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .07em; line-height: 1.35; }
+
+/* main grid */
+.grid { display: grid; grid-template-columns: 1fr 1fr; }
+.panel { padding: 28px 36px; border-bottom: 1px solid var(--gray); }
+.panel:nth-child(odd) { border-right: 1px solid var(--gray); }
+
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.ph { font-family: 'Playfair Display', serif; font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+.ph em { font-style: italic; color: var(--gold); }
+.bt { font-size: 13px; color: #2d3e60; line-height: 1.72; }
+.bt p + p { margin-top: 9px; }
+
+.pull { border-left: 3px solid var(--gold); padding: 10px 14px; margin: 14px 0; background: rgba(252,163,17,0.05); border-radius: 0 5px 5px 0; }
+.pull p { font-family: 'Playfair Display', serif; font-size: 13.5px; font-style: italic; color: var(--navy); line-height: 1.5; }
+
+/* chart — key: position relative + explicit height on wrapper, canvas fills it */
+.cbox { position: relative; width: 100%; margin: 14px 0 4px; }
+.cbox canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
+
+.cnote { font-size: 10px; color: var(--muted); margin-top: 8px; font-style: italic; line-height: 1.5; }
+
+/* inline bars */
+.brow { margin-bottom: 9px; }
+.blabel { display: flex; justify-content: space-between; font-size: 11.5px; color: #3a4a6a; margin-bottom: 3px; font-weight: 500; }
+.blabel span:last-child { font-family: 'DM Mono', monospace; }
+.btrack { height: 7px; background: var(--gray); border-radius: 4px; overflow: hidden; }
+.bfill { height: 100%; border-radius: 4px; }
+
+/* gender stat pair */
+.gstat-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+.gstat { background: var(--soft); border: 1px solid var(--gray); border-radius: 7px; padding: 14px 16px; }
+.gstat-n { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--navy); line-height: 1; letter-spacing: 0; margin-bottom: 2px; }
+.gstat-n .pct { font-size: 18px; color: var(--gold); margin-left: 3px; }
+.gstat-l { font-size: 11px; color: #5a6a8a; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; font-weight: 600; }
+.gstat-ct { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); }
+
+/* signal box */
+.sig { background: #fff8ed; border: 1.5px solid var(--gold); border-radius: 6px; padding: 12px 14px; margin-top: 12px; }
+.sig p { font-size: 12.5px; color: var(--navy); line-height: 1.6; }
+
+/* momentum mini cards */
+.mom2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.mc { border: 1.5px solid var(--gray); border-radius: 7px; padding: 12px 14px; position: relative; overflow: hidden; }
+.mc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+.mc-n { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: 0; line-height: 1; margin-bottom: 2px; }
+.mc-n .g { color: var(--gold); font-size: 20px; margin-left: 2px; }
+.mc-l { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin-bottom: 4px; }
+.mc-t { font-size: 11.5px; color: #4a5a7a; line-height: 1.5; }
+
+/* close */
+.close { background: var(--navy); padding: 32px 40px; display: grid; grid-template-columns: 1fr auto; gap: 52px; align-items: center; }
+.close-h { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.2vw, 26px); font-weight: 900; line-height: 1.2; color: #fff; margin-bottom: 10px; }
+.close-h em { font-style: italic; color: var(--gold); }
+.close-b { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.72; max-width: 540px; }
+.close-b p + p { margin-top: 9px; }
+.close-stats { display: flex; flex-direction: column; gap: 14px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 36px; flex-shrink: 0; }
+.csn { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: 0; }
+.csl { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: .1em; margin-top: 1px; }
+.csd { width: 28px; height: 1px; background: rgba(252,163,17,0.2); }
+
+footer { background: #000; padding: 12px 40px; display: flex; justify-content: space-between; }
+footer span { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+footer span:first-child { color: #444; }
+footer span:last-child { color: rgba(252,163,17,0.5); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>NAMI Franklin County · Mental Health First Aid · Confidential Funder Brief</span>
+  <span>May 2026 · Measurement Ally</span>
+</div>
+
+<div class="hero">
+  <div>
+    <div class="hero-h">Building Franklin County's<br><em>frontline mental health response network.</em></div>
+    <p class="hero-sub">A four-year case for community-based training that reaches the people already in the room — before a crisis becomes a tragedy.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">862</div><div class="hs-l">Trained since 2022</div></div>
+    <div class="hs"><div class="hs-n">149<span class="unit">%</span></div><div class="hs-l">Growth 2022→2025</div></div>
+    <div class="hs"><div class="hs-n">62<span class="unit">%</span></div><div class="hs-l">Participants of color</div></div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="sc"><div class="sc-n">289</div><div class="sc-l">Trained in 2025 — record year</div></div>
+  <div class="sc"><div class="sc-n">~294</div><div class="sc-l">2026 projected — new record</div></div>
+  <div class="sc"><div class="sc-n">82%</div><div class="sc-l">Women — the frontline workforce</div></div>
+  <div class="sc"><div class="sc-n">0</div><div class="sc-l">Delivery periods missed since 2022</div></div>
+</div>
+
+<div class="grid">
+
+  <!-- 01 LEFT: NETWORK NARRATIVE -->
+  <div class="panel">
+    <p class="eyebrow">01 · The Headline</p>
+    <h2 class="ph">862 trained is not a headcount. <em>It is a network.</em></h2>
+    <div class="bt">
+      <p>Every person who completes Mental Health First Aid becomes a node. A teacher who now recognizes warning signs. A nurse who can de-escalate before a code. A faith leader whose congregation trusts her — and who now has the skills to act on that trust.</p>
+      <p>Franklin County doesn't call a hotline first. It calls a neighbor, a pastor, a school counselor. <strong>NAMI FC has been training those people since 2022 — and the network is still growing.</strong></p>
+      <div class="pull"><p>"You are not funding a training program. You are building a first-responder network without a badge — present in every school, clinic, and congregation in this county."</p></div>
+    </div>
+  </div>
+
+  <!-- 01 RIGHT: GROWTH CHART + MOMENTUM CARDS -->
+  <div class="panel">
+    <p class="eyebrow">Annual training completions · 2022–2026</p>
+    <div class="cbox" style="height:180px;">
+      <canvas id="growthChart" aria-label="Bar chart: 116 in 2022, 197 in 2023, 260 in 2024, 289 in 2025, projected 294 in 2026"></canvas>
+    </div>
+    <p class="cnote">Gold bar = 2025 record. Projected 2026 bar = annualized from Jan–Feb actuals (49 trained). Source: NAMI FC Dashboards 2022–2026.</p>
+    <div class="mom2">
+      <div class="mc">
+        <div class="mc-n">70 <span class="g">%</span></div>
+        <div class="mc-l">First-year surge</div>
+        <div class="mc-t">116 → 197. Program nearly doubled in its first full year. The foundation was built fast.</div>
+      </div>
+      <div class="mc">
+        <div class="mc-n">11 <span class="g">%</span></div>
+        <div class="mc-l">Growth at scale</div>
+        <div class="mc-t">260 → 289. Sustained growth coming off a record year. A mature curve, not a spike.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 LEFT: WORKFORCE STORY -->
+  <div class="panel">
+    <p class="eyebrow">02 · The Workforce Story</p>
+    <h2 class="ph">8 in 10 are women. <em>That is not a coincidence.</em></h2>
+    <div class="bt">
+      <p>76%, 83%, 84%, 82% — four consecutive years of the same signal. NAMI FC is reaching <strong>teachers, school counselors, nurses, social workers, faith leaders, home health aides.</strong> The people who carry mental health support in this community before any formal system does.</p>
+      <p>One trained school counselor reaches every student in her building. One trained faith leader reaches an entire congregation. <strong>The multiplier is compounding.</strong> This is not a training count. It is a force multiplier deployed in the field.</p>
+    </div>
+  </div>
+
+  <!-- 02 RIGHT: GENDER BARS + WAFFLE -->
+  <div class="panel">
+    <p class="eyebrow">Gender composition — 4-year consistency</p>
+    <div style="margin: 14px 0 4px;">
+      <div class="brow"><div class="blabel"><span>2022</span><span>76% female</span></div><div class="btrack"><div class="bfill" style="width:76%;background:var(--navy);"></div></div></div>
+      <div class="brow"><div class="blabel"><span>2023</span><span>83% female</span></div><div class="btrack"><div class="bfill" style="width:83%;background:var(--navy);"></div></div></div>
+      <div class="brow"><div class="blabel"><span>2024</span><span>84% female</span></div><div class="btrack"><div class="bfill" style="width:84%;background:var(--navy);"></div></div></div>
+      <div class="brow"><div class="blabel"><span>2025</span><span>82% female</span></div><div class="btrack"><div class="bfill" style="width:82%;background:var(--gold);"></div></div></div>
+    </div>
+    <div class="gstat-pair">
+      <div class="gstat">
+        <div class="gstat-l">Women</div>
+        <div class="gstat-n">82 <span class="pct">%</span></div>
+        <div class="gstat-ct">708 of 862 cumulative</div>
+      </div>
+      <div class="gstat">
+        <div class="gstat-l">Men</div>
+        <div class="gstat-n">18 <span class="pct">%</span></div>
+        <div class="gstat-ct">154 of 862 cumulative</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 LEFT: EQUITY STORY -->
+  <div class="panel">
+    <p class="eyebrow">03 · The Equity Story</p>
+    <h2 class="ph"><em>This is not</em> the program that serves the easiest population.</h2>
+    <div class="bt">
+      <p>In 2025, participants split nearly down the middle between Black and Caucasian community members — <strong>110 vs. 109 people.</strong> That near-parity is the result of four years of intentional trust-building in a field where mental health services persistently fail Black communities.</p>
+      <p><strong>62% of 2025 participants identified as people of color.</strong> The program does not serve the path of least resistance — the data proves it.</p>
+      <div class="pull"><p>"The mental health equity gap closes when communities of color are centered from the start — not reached as an afterthought."</p></div>
+    </div>
+    <div class="sig">
+      <p class="eyebrow" style="margin-bottom:5px; font-size:8.5px;">2026 early signal</p>
+      <p>In Jan–Feb 2026, <strong>Hispanic participants = 16%</strong> of those trained — more than double the 2025 full-year rate of 6.9%. The community reach is deepening, not plateauing.</p>
+    </div>
+  </div>
+
+  <!-- 03 RIGHT: RACE CHART + EQUITY CARDS -->
+  <div class="panel">
+    <p class="eyebrow">Racial/ethnic composition · 2022–2025</p>
+    <div class="cbox" style="height:180px;">
+      <canvas id="equityChart" aria-label="Stacked bar chart showing MHFA racial composition 2022-2025"></canvas>
+    </div>
+    <p class="cnote">Demographics reflect self-reported race/ethnicity per year. Source: NAMI FC Dashboards 2022–2025.</p>
+    <div class="mom2">
+      <div class="mc">
+        <div class="mc-n">62 <span class="g">%</span></div>
+        <div class="mc-l">POC in 2025</div>
+        <div class="mc-t">180 of 289 participants identified as people of color. Not an afterthought — a track record.</div>
+      </div>
+      <div class="mc">
+        <div class="mc-n">4 <span class="g">×</span></div>
+        <div class="mc-l">Hispanic growth</div>
+        <div class="mc-t">1.7% in 2022 → 6.9% in 2025 → 16% in early 2026. Something structural is shifting.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 LEFT: OPERATIONAL MATURITY -->
+  <div class="panel">
+    <p class="eyebrow">04 · Operational Maturity</p>
+    <h2 class="ph">No dead seasons. No gaps. <em>Every period, every year.</em></h2>
+    <div class="bt">
+      <p>In 2025, the lowest training period was 38 participants (July–August). The highest: 69 (March–April). <strong>Standard deviation of just 10 across six delivery windows.</strong> No dead months. Stable facilitators. A pipeline that does not depend on one funder or one event.</p>
+      <p>Demand-driven expansion is the most credible story a program can tell — and this data tells it without equivocation.</p>
+    </div>
+    <div class="mom2">
+      <div class="mc">
+        <div class="mc-n">4 <span class="g">yrs</span></div>
+        <div class="mc-l">Uninterrupted delivery</div>
+        <div class="mc-t">Not a single bi-monthly period missed since 2022. Organizational infrastructure, not dependency.</div>
+      </div>
+      <div class="mc">
+        <div class="mc-n">~294</div>
+        <div class="mc-l">2026 projected</div>
+        <div class="mc-t">49 trained in Jan–Feb. You are not funding a hope. You are accelerating what is already moving.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 RIGHT: PERIOD CHART -->
+  <div class="panel">
+    <p class="eyebrow">2025 delivery by bi-monthly period</p>
+    <div class="cbox" style="height:180px;">
+      <canvas id="periodsChart" aria-label="Bar chart: all 6 periods in 2025 show consistent delivery from 38 to 69 participants"></canvas>
+    </div>
+    <p class="cnote">Lowest: Jul–Aug 38 · Highest: Mar–Apr 69 · Std dev = 10. No period below 38 — consistent year-round delivery confirmed across all 4 years.</p>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- CLOSE -->
+<div class="close">
+  <div>
+    <p class="eyebrow" style="margin-bottom:10px;">05 · The Opportunity</p>
+    <h2 class="close-h">The work is being done. The communities are being reached.<br><em>The network is ready to scale.</em></h2>
+    <div class="close-b">
+      <p>What NAMI Franklin County's MHFA data demonstrates is rare: a program that has already solved the hardest problems. It reaches communities of color not as a goal but as a track record. It delivers consistently not as a promise but as four unbroken years of evidence. It grows because the community keeps showing up.</p>
+      <p><strong style="color:#fff;">Your investment does not create the momentum. It accelerates what is already moving.</strong></p>
+      <p>The 863rd person trained will be a teacher, a nurse, a pastor, a neighbor — carrying skills into a community that has not historically had access to this kind of preparation. One more node in a network that saves lives.</p>
+      <p style="margin-top:14px; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.1em; color:rgba(255,255,255,0.2); text-transform:uppercase;">Data: NAMI FC Dashboards 2021–2026 · Analysis: Measurement Ally · May 2026</p>
+    </div>
+  </div>
+  <div class="close-stats">
+    <div><div class="csn">862</div><div class="csl">Community members trained</div></div>
+    <div class="csd"></div>
+    <div><div class="csn">62%</div><div class="csl">Participants of color (2025)</div></div>
+    <div class="csd"></div>
+    <div><div class="csn">82%</div><div class="csl">Women — frontline workforce</div></div>
+    <div class="csd"></div>
+    <div><div class="csn">0</div><div class="csl">Missed delivery periods</div></div>
+  </div>
+</div>
+
+<footer>
+  <span>NAMI Franklin County · Mental Health First Aid · Confidential</span>
+  <span>Prepared by Measurement Ally · May 2026</span>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+// Growth
+new Chart(document.getElementById('growthChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2022','2023','2024','2025','2026 proj.'],
+    datasets: [{
+      data: [116,197,260,289,294],
+      backgroundColor: ['#1e3060','#1e3060','#1e3060','#FCA311','rgba(252,163,17,0.32)'],
+      borderColor:      ['transparent','transparent','transparent','transparent','#FCA311'],
+      borderWidth: [0,0,0,0,1.5],
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: c => ' ' + c.raw + ' trained' } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#8899bb', font: { size: 10 } } },
+      y: { grid: { color: 'rgba(20,33,61,0.07)' }, ticks: { color: '#8899bb', font: { size: 10 } } }
+    }
+  }
+});
+
+// Equity
+new Chart(document.getElementById('equityChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2022','2023','2024','2025'],
+    datasets: [
+      { label: 'Black/AA',  data: [50.9,33.5,31.9,38.1], backgroundColor: '#FCA311' },
+      { label: 'Caucasian', data: [40.5,41.6,48.1,37.7], backgroundColor: '#4a6fa5' },
+      { label: 'Hispanic',  data: [1.7, 8.6, 4.2, 6.9],  backgroundColor: '#7ba7d4' },
+      { label: 'Asian PI',  data: [2.6, 4.1, 4.2, 4.2],  backgroundColor: '#8899bb' },
+      { label: 'Other',     data: [4.3,12.2,11.6,13.1],  backgroundColor: '#c8d3e8' }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#6a7a9a', font: { size: 9.5 }, boxWidth: 9, padding: 9 } },
+      tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + c.raw + '%' } }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false }, ticks: { color: '#8899bb', font: { size: 10 } } },
+      y: { stacked: true, max: 100, grid: { color: 'rgba(20,33,61,0.07)' },
+           ticks: { color: '#8899bb', font: { size: 10 }, callback: v => v + '%' } }
+    }
+  }
+});
+
+// Periods
+new Chart(document.getElementById('periodsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan–Feb','Mar–Apr','May–Jun','Jul–Aug','Sep–Oct','Nov–Dec'],
+    datasets: [{
+      data: [42,69,44,38,50,46],
+      backgroundColor: (_,i) => i === 1 ? '#FCA311' : '#14213D',
+      borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: c => ' ' + c.raw + ' participants' } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#6a7a9a', font: { size: 10 } } },
+      y: { min: 0, max: 80, grid: { color: 'rgba(20,33,61,0.07)' }, ticks: { color: '#6a7a9a', font: { size: 10 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>
