@@ -156,7 +156,7 @@ export default function Platform() {
                 Available for early partnership conversations.
               </span>
             </div>
-            <a href="/#contact" className={styles.cta}>
+            <a href="mailto:erica@measurementally.com" className={styles.cta}>
               Talk to us about early access
             </a>
           </div>

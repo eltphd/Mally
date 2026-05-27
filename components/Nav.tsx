@@ -12,7 +12,7 @@ export default function Nav() {
         <a href="/work">Our Work</a>
         <a href="/#about">About</a>
         <a href="/platform">Platform</a>
-        <a href="/#contact" className={styles.cta}>Start a Conversation</a>
+        <a href="mailto:erica@measurementally.com" className={styles.cta}>Start a Conversation</a>
       </div>
     </nav>
   );

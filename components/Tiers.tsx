@@ -88,7 +88,7 @@ export default function Tiers() {
               </ul>
             )}
 
-            <a href="/#contact" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
+            <a href="mailto:erica@measurementally.com" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
               Start a Conversation
             </a>
           </div>
@@ -97,7 +97,7 @@ export default function Tiers() {
 
       <p className={styles.footnote}>
         Not sure which tier fits? We'll figure it out together.{' '}
-        <a href="/#contact">Send a message →</a>
+        <a href="mailto:erica@measurementally.com">Send a message →</a>
       </p>
     </section>
   );

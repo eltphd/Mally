@@ -16,7 +16,7 @@ export default function Hero() {
           have.
         </p>
         <div className={styles.actions}>
-          <a href="#contact" className={styles.btnPrimary}>Start a Conversation</a>
+          <a href="mailto:erica@measurementally.com" className={styles.btnPrimary}>Start a Conversation</a>
           <a href="#work" className={styles.btnGhost}>See our work</a>
         </div>
       </div>
