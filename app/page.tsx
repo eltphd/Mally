@@ -2,6 +2,7 @@ import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import StatementBand from '@/components/StatementBand';
 import Services from '@/components/Services';
+import Tiers from '@/components/Tiers';
 import CaseStudy from '@/components/CaseStudy';
 import Difference from '@/components/Difference';
 import About from '@/components/About';
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <StatementBand />
       <Services />
+      <Tiers />
       <CaseStudy />
       <Difference />
       <About />

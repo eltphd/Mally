@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './About.module.css';
 
 const creds = [
@@ -39,16 +40,19 @@ export default function About() {
         </div>
       </div>
 
-      <div>
-        <div className={styles.badge}>
-          <div className={styles.badgeInitials}>ET</div>
-          <div className={styles.badgeTitle}>
-            Dr. Erica L. Tartt, PhD<br />Founder &amp; CEO
-          </div>
-          <div className={styles.badgeSub}>
-            Quantitative Methodologist<br />
-            Community Impact Strategist<br />
-            Canal Winchester, OH
+      <div className={styles.photoColumn}>
+        <div className={styles.photoWrap}>
+          <Image
+            src="/dr-tartt.png"
+            alt="Dr. Erica L. Tartt, PhD — Founder & CEO, Measurement Ally"
+            width={480}
+            height={600}
+            className={styles.photo}
+            priority
+          />
+          <div className={styles.photoCaption}>
+            Dr. Erica L. Tartt, PhD<br />
+            <span>Founder &amp; CEO · Measurement Ally</span>
           </div>
         </div>
       </div>

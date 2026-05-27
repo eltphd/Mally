@@ -8,6 +8,7 @@ export default function Nav() {
       </div>
       <div className={styles.links}>
         <a href="/#services">Services</a>
+        <a href="/#tiers">Pricing</a>
         <a href="/work">Our Work</a>
         <a href="/#about">About</a>
         <a href="/platform">Platform</a>

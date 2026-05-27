@@ -64,33 +64,69 @@
   line-height: 1.6;
 }
 
-.badge {
-  background: var(--navy);
-  padding: 48px 40px;
-  border-radius: 4px;
+/* ── Photo column ── */
+.photoColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.photoWrap {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 2px;
+  /* Subtle gold shadow to tie into brand palette */
+  box-shadow: 8px 8px 0 0 var(--gold);
+}
+
+.photoCaption {
+  margin-top: 16px;
   text-align: center;
-}
-
-.badgeInitials {
-  font-family: var(--font-playfair), serif;
-  font-size: 72px;
-  font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.badgeTitle {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.9);
   font-weight: 700;
+  color: var(--navy);
   line-height: 1.5;
-  margin-bottom: 8px;
 }
 
-.badgeSub {
+.photoCaption span {
+  font-weight: 400;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 1.6;
+  color: var(--text-light);
   font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 80px 40px;
+  }
+
+  .photoColumn {
+    order: -1;
+  }
+
+  .photoWrap {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 64px 24px;
+  }
+
+  .name {
+    font-size: 28px;
+  }
 }
