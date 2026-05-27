@@ -60,7 +60,7 @@ const WORK: PortfolioItem[] = [
   {
     id: 'ohmas-research',
     partner: 'OHMAS',
-    partnerSub: 'Ohio Healthy Minds Adolescent Study · Statewide',
+    partnerSub: 'Ohio Black Youth Suicide Community Discussions',
     type: 'Research Report',
     year: '2024',
     title: 'Research2Conversation: A Community-Led Initiative on Black Adolescent Suicide in Ohio',
