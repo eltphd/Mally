@@ -3,7 +3,8 @@ import styles from './About.module.css';
 
 const creds = [
   'PhD, University of California Santa Barbara — Quantitative Methodology, 2023',
-  <>Published in <em>Psychological Methods</em> (Nylund-Gibson et al.) — LCA of Black adolescent experiences</>,
+  <>Co-author, <em>Psychological Methods</em> — &ldquo;Ten Frequently Asked Questions About Latent Transition Analysis&rdquo; (2023)</>,
+  <>Dissertation: &ldquo;Unraveling an Epidemic of Hopelessness: A Latent Class Analysis of Black Adolescent Student Experiences&rdquo; — UC Santa Barbara, 2023</>,
   <>Manuscript under review, <em>Review of Research in Education</em> — AI-Assisted QuantCrit Meta-Synthesis</>,
   'Research Director, US-Squared Research Institute — 501(c)(3) education research nonprofit',
   '20+ years in education research, evaluation, and community-centered practice',
