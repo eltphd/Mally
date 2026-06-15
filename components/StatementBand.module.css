@@ -37,3 +37,19 @@
   opacity: 0.6;
   margin-top: 12px;
 }
+
+@media (max-width: 768px) {
+  .band {
+    padding: 40px 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mark {
+    display: none;
+  }
+
+  .text {
+    font-size: 20px;
+  }
+}

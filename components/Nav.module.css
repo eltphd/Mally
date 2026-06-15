@@ -59,3 +59,17 @@
   background: var(--gold) !important;
   color: var(--navy) !important;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 24px;
+  }
+
+  .links a:not(.cta) {
+    display: none;
+  }
+
+  .links {
+    gap: 0;
+  }
+}

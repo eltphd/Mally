@@ -50,3 +50,24 @@
   color: var(--text-mid);
   line-height: 1.8;
 }
+
+@media (max-width: 900px) {
+  .difference {
+    padding: 80px 32px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .difference {
+    padding: 64px 24px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}

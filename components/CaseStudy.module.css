@@ -90,3 +90,29 @@
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.5;
 }
+
+@media (max-width: 900px) {
+  .caseStudy {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 80px 32px;
+  }
+
+  .org {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .caseStudy {
+    padding: 64px 24px;
+  }
+
+  .org {
+    font-size: 24px;
+  }
+
+  .metricN {
+    font-size: 36px;
+  }
+}

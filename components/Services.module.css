@@ -88,3 +88,28 @@
   border-bottom: 1px solid var(--gold);
   padding-bottom: 2px;
 }
+
+@media (max-width: 900px) {
+  .services {
+    padding: 80px 32px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 64px 24px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}

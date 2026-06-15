@@ -72,3 +72,33 @@
   font-size: 15px;
   color: var(--gold-light);
 }
+
+@media (max-width: 768px) {
+  .cta {
+    padding: 80px 32px;
+  }
+
+  .headline {
+    font-size: 32px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contactRow {
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    padding: 64px 24px;
+  }
+
+  .headline {
+    font-size: 26px;
+  }
+}
