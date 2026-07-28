@@ -21,6 +21,12 @@ const services = [
   },
   {
     num: '04',
+    name: 'Grant Infrastructure',
+    desc: "Every fact a winning application needs already lives in your coalition — the letter your clinical partner will sign, the numbers your program director keeps, the review your CFO would give. We turn the relationships you've already built into a submission-ready application: narratives, budgets, attachments, portal support, and the evaluation plan designed in from page one. Your partnership is already the grant infrastructure. We make it fundable.",
+    tag: 'Federal Applications · Coalition Grants · Submission Support',
+  },
+  {
+    num: '05',
     name: 'Strategic Consultation',
     desc: "Program design, evaluation strategy, logic model development. We think with you — about what you're trying to prove, what you're measuring, and how to structure your work so the evidence builds naturally. This is the conversation most evaluation firms skip. We turn validated research and real-world needs into working systems, not abstract theory.",
     tag: 'Logic Models · Program Design · Strategy',
@@ -34,7 +40,7 @@ export default function Services() {
         <div>
           <div className={styles.eyebrow}>What We Do</div>
           <h2 className={styles.title}>
-            Four ways we turn<br />your work into evidence
+            Five ways we turn<br />your work into evidence
           </h2>
         </div>
         <div className={styles.headerBody}>
