@@ -53,50 +53,50 @@ function DashboardMockup() {
             {/* Stat cards */}
             <div className={styles.statRow}>
               <div className={styles.statCard}>
-                <div className={styles.statN}>34</div>
+                <div className={styles.statN}>41</div>
                 <div className={styles.statL}>Reports generated</div>
               </div>
               <div className={styles.statCard}>
-                <div className={`${styles.statN} ${styles.statNGold}`}>89%</div>
+                <div className={`${styles.statN} ${styles.statNGold}`}>92%</div>
                 <div className={styles.statL}>Outcome documented</div>
               </div>
               <div className={styles.statCard}>
-                <div className={styles.statN}>6</div>
+                <div className={styles.statN}>5</div>
                 <div className={styles.statL}>Years longitudinal</div>
               </div>
             </div>
 
             {/* Chart area */}
             <div className={styles.chartWrap}>
-              <div className={styles.chartLabel}>Program reach · Year over year</div>
+              <div className={styles.chartLabel}>Program reach · Year over year (sample data)</div>
               <div className={styles.chartBars}>
                 <div className={styles.chartRow}>
-                  <span className={styles.chartYr}>2020</span>
+                  <span className={styles.chartYr}>Yr 1</span>
                   <div className={styles.chartTrack}>
                     <div className={styles.chartFill} style={{ width: '38%' }} />
                   </div>
-                  <span className={styles.chartVal}>2,100</span>
+                  <span className={styles.chartVal}>1,480</span>
                 </div>
                 <div className={styles.chartRow}>
-                  <span className={styles.chartYr}>2021</span>
+                  <span className={styles.chartYr}>Yr 2</span>
                   <div className={styles.chartTrack}>
                     <div className={styles.chartFill} style={{ width: '52%' }} />
                   </div>
-                  <span className={styles.chartVal}>3,900</span>
+                  <span className={styles.chartVal}>2,930</span>
                 </div>
                 <div className={styles.chartRow}>
-                  <span className={styles.chartYr}>2022</span>
+                  <span className={styles.chartYr}>Yr 3</span>
                   <div className={styles.chartTrack}>
                     <div className={styles.chartFill} style={{ width: '68%' }} />
                   </div>
-                  <span className={styles.chartVal}>6,200</span>
+                  <span className={styles.chartVal}>5,610</span>
                 </div>
                 <div className={styles.chartRow}>
-                  <span className={styles.chartYr}>2023</span>
+                  <span className={styles.chartYr}>Yr 4</span>
                   <div className={styles.chartTrack}>
                     <div className={`${styles.chartFill} ${styles.chartFillGold}`} style={{ width: '100%' }} />
                   </div>
-                  <span className={`${styles.chartVal} ${styles.chartValGold}`}>22,194</span>
+                  <span className={`${styles.chartVal} ${styles.chartValGold}`}>9,340</span>
                 </div>
               </div>
             </div>
@@ -127,6 +127,9 @@ export default function Platform() {
         {/* Mockup hero section */}
         <section className={styles.mockupSection}>
           <DashboardMockup />
+          <p style={{ textAlign: 'center', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-light)', marginTop: 16 }}>
+            Illustrative product concept — sample data
+          </p>
         </section>
 
         {/* Content section */}

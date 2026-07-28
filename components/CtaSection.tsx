@@ -11,7 +11,10 @@ export default function CtaSection() {
         to see it.
       </p>
       <div className={styles.actions}>
-        <a href="mailto:erica@measurementally.com" className={styles.btnPrimary}>
+        <a
+          href={`mailto:erica@measurementally.com?subject=${encodeURIComponent('Measurement Ally — Start a Conversation')}&body=${encodeURIComponent('Hi Dr. Tartt,\n\nOrganization:\nWhat we need:\nDeadline (if any):\nData we already have (even if messy):\n')}`}
+          className={styles.btnPrimary}
+        >
           Send a Message
         </a>
       </div>

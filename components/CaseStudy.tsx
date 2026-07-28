@@ -41,9 +41,9 @@ export default function CaseStudy() {
           <strong>200% post-COVID program growth</strong> visible for the first time.
         </p>
         <div className={styles.insight}>
-          &ldquo;They had years of SurveyMonkey responses sitting in an account. We turned it into a
-          story their board could present, their funders could trust, and their community could be
-          proud of.&rdquo;
+          <strong>Our take —</strong> they had years of SurveyMonkey responses sitting in an
+          account. We turned it into a story their board could present, their funders could trust,
+          and their community could be proud of.
         </div>
       </div>
 

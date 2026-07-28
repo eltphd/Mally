@@ -4,6 +4,7 @@ import StatementBand from '@/components/StatementBand';
 import Services from '@/components/Services';
 import Tiers from '@/components/Tiers';
 import CaseStudy from '@/components/CaseStudy';
+import ProofBand from '@/components/ProofBand';
 import Difference from '@/components/Difference';
 import About from '@/components/About';
 import CtaSection from '@/components/CtaSection';
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <Tiers />
       <CaseStudy />
+      <ProofBand />
       <Difference />
       <About />
       <CtaSection />

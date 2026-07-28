@@ -88,7 +88,10 @@ export default function Tiers() {
               </ul>
             )}
 
-            <a href="mailto:erica@measurementally.com" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
+            <a
+              href={`mailto:erica@measurementally.com?subject=${encodeURIComponent(`Inquiry — ${t.num}: ${t.name}`)}&body=${encodeURIComponent('Hi Dr. Tartt,\n\nOrganization:\nWhat we need:\nDeadline (if any):\nData we already have (even if messy):\n')}`}
+              className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}
+            >
               Start a Conversation
             </a>
           </div>
