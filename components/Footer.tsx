@@ -19,6 +19,7 @@ export default function Footer() {
         <a href="/work">Work</a>
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
+        <a href="/portal">Client Portal</a>
       </div>
     </footer>
   );
