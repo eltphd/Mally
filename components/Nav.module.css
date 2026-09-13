@@ -16,8 +16,9 @@
 
 .logo {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--navy);
   letter-spacing: 0.01em;
 }
@@ -34,9 +35,10 @@
 
 .links a {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--text-mid);
   transition: color 0.2s;
 }
@@ -47,17 +49,23 @@
 
 .cta {
   background: var(--navy);
-  color: #fff !important;
+  color: var(--ivory-100) !important;
   padding: 10px 24px;
   border-radius: 2px;
   font-size: 12px !important;
   letter-spacing: 0.1em;
   transition: background 0.2s, color 0.2s !important;
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .cta:hover {
   background: var(--gold) !important;
-  color: var(--navy) !important;
+  color: var(--btn-on-gold, var(--ivory-100)) !important;
 }
 
 @media (max-width: 768px) {

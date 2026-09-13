@@ -5,22 +5,30 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 64px;
   align-items: center;
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .eyebrow {
   font-family: var(--font-lato), sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--gold-light);
   margin-bottom: 20px;
 }
 
 .title {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 38px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--warm-white);
   line-height: 1.25;
   margin-bottom: 24px;
@@ -66,8 +74,9 @@
 
 .statN {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--gold-light);
   line-height: 1;
   margin-bottom: 8px;

@@ -47,9 +47,8 @@ export default function About() {
             src="/dr-tartt.png"
             alt="Dr. Erica L. Tartt, PhD — Founder & CEO, Measurement Ally"
             width={480}
-            height={600}
+            height={640}
             className={styles.photo}
-            priority
           />
           <div className={styles.photoCaption}>
             Dr. Erica L. Tartt, PhD<br />

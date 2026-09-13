@@ -11,23 +11,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .eyebrow {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--gold);
   margin-bottom: 28px;
 }
 
 .headline {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 46px;
   font-weight: 400;
   line-height: 1.2;
-  color: #fff;
+  color: var(--ivory-100);
   margin-bottom: 28px;
 }
 
@@ -53,23 +61,24 @@
 
 .btnPrimary {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--btn-on-gold, var(--ivory-100));
   padding: 14px 32px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   border-radius: 2px;
   transition: background 0.2s;
   display: inline-block;
 }
 
 .btnPrimary:hover {
-  background: var(--gold-light);
+  background: var(--gold); filter: brightness(1.12);
 }
 
 .btnGhost {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
   font-weight: 400;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -78,8 +87,8 @@
 }
 
 .btnGhost:hover {
-  color: #fff;
-  border-color: #fff;
+  color: var(--ivory-100);
+  border-color: var(--ivory-100);
 }
 
 .right {
@@ -103,8 +112,9 @@
 
 .statNumber {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--navy);
   line-height: 1;
   margin-bottom: 8px;

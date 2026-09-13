@@ -155,7 +155,7 @@ function WorkCard({ item }: { item: PortfolioItem }) {
             target={isInteractive ? '_blank' : undefined}
             rel={isInteractive ? 'noopener noreferrer' : undefined}
             className={styles.cardCta}
-            aria-label={`View full ${item.type.toLowerCase()}: ${item.partner}`}
+            aria-label={`View the work: ${item.type.toLowerCase()} for ${item.partner}`}
           >
             View the work
             <svg

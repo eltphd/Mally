@@ -9,15 +9,17 @@
 
 .eyebrow {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--gold);
   margin-bottom: 20px;
 }
 
 .name {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 34px;
   font-weight: 400;
   color: var(--navy);

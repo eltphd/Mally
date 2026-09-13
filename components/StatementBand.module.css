@@ -8,9 +8,10 @@
 
 .mark {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 96px;
-  font-weight: 700;
-  color: var(--navy);
+  font-weight: 400;
+  color: var(--ivory-100);
   opacity: 0.15;
   line-height: 1;
   flex-shrink: 0;
@@ -18,11 +19,12 @@
 }
 
 .text {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-display-italic);
+  font-optical-sizing: auto;
   font-size: 26px;
   font-weight: 400;
   font-style: italic;
-  color: var(--navy);
+  color: var(--ivory-100);
   line-height: 1.5;
   max-width: 800px;
 }
@@ -30,11 +32,12 @@
 .attr {
   font-family: var(--font-lato), sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.6;
+  font-family: var(--font-mono);
+  color: var(--ivory-100);
+  opacity: 1;
   margin-top: 12px;
 }
 
