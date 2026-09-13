@@ -1,3 +1,9 @@
+> **Superseded (Sept 13, 2026).** The public Measurement Ally site now lives in
+> [`eltphd/mallybuild`](https://github.com/eltphd/mallybuild) under `app/(site)/`
+> and `components/site/`, served by the `mallybuild` Vercel project alongside the
+> client portal. Edit it there. This repository is kept for history only and
+> should be archived once the domain has moved.
+
 # Mally
 Measurement Ally Web
 
