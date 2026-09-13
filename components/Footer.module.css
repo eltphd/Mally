@@ -5,6 +5,12 @@
   justify-content: space-between;
   align-items: center;
   gap: 32px;
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .copyWrap {
@@ -16,9 +22,10 @@
 
 .logo {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 16px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .logoAccent {
@@ -27,12 +34,12 @@
 
 .copy {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .legal {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.68);
   line-height: 1.5;
   max-width: 480px;
 }
@@ -44,7 +51,7 @@
 
 .links a {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.68);
   letter-spacing: 0.06em;
   transition: color 0.2s;
 }

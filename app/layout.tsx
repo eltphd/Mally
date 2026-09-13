@@ -1,19 +1,39 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Lato } from 'next/font/google';
+import { Archivo, IBM_Plex_Mono, Newsreader } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const playfair = Playfair_Display({
+// Self-hosted by next/font at build time; font-display: swap on every face.
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  weight: 'variable',
+  style: 'normal',
+  axes: ['opsz'],
+  variable: '--font-newsreader',
+  display: 'swap',
+});
+// The italic face serves the italic phrase in headlines; not preloaded so the
+// roman face and body font reach the first paint sooner.
+const newsreaderItalic = localFont({
+  src: './fonts/newsreader-italic.woff2',
+  style: 'italic',
+  weight: '200 800',
+  display: 'swap',
+  preload: false,
+  variable: '--font-newsreader-italic',
+});
+
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-archivo',
   display: 'swap',
 });
 
-const lato = Lato({
+const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
-  weight: ['300', '400', '700', '900'],
-  variable: '--font-lato',
+  weight: ['400', '500'],
+  variable: '--font-plex-mono',
   display: 'swap',
 });
 
@@ -25,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
+    <html lang="en" data-venture="ma" className={`${newsreader.variable} ${newsreaderItalic.variable} ${archivo.variable} ${plexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

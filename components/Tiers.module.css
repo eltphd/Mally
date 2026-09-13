@@ -10,15 +10,17 @@
 
 .eyebrow {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--gold);
   margin-bottom: 16px;
 }
 
 .title {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 38px;
   font-weight: 400;
   line-height: 1.25;
@@ -51,15 +53,27 @@
 }
 
 .card:hover {
-  background: #fff;
+  background: var(--ivory-100);
 }
 
 .featured {
   background: var(--navy);
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .featured:hover {
   background: var(--navy-deep);
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 /* ── Featured badge ── */
@@ -68,20 +82,22 @@
   top: 0;
   right: 0;
   background: var(--gold);
-  color: #fff;
+  color: var(--btn-on-gold, var(--ivory-100));
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   padding: 5px 14px;
 }
 
 /* ── Tier label ── */
 .tierLabel {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--gold);
   margin-bottom: 12px;
 }
@@ -93,20 +109,22 @@
 /* ── Tier name ── */
 .tierName {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--navy);
   margin-bottom: 16px;
   line-height: 1.2;
 }
 
 .featured .tierName {
-  color: #fff;
+  color: var(--ivory-100);
 }
 
 /* ── Price ── */
 .price {
   font-family: var(--font-playfair), serif;
+  font-optical-sizing: auto;
   font-size: 32px;
   font-weight: 400;
   color: var(--navy);
@@ -134,9 +152,10 @@
 .timeline {
   display: inline-block;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   color: var(--navy);
   border-bottom: 1px solid var(--gold);
   padding-bottom: 2px;
@@ -144,7 +163,7 @@
 }
 
 .featured .timeline {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.68);
   border-bottom-color: var(--gold-light);
 }
 
@@ -180,7 +199,7 @@
 
 .featured .includeItem {
   color: rgba(255, 255, 255, 0.75);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.68);
 }
 
 .check {
@@ -199,9 +218,10 @@
   margin-top: auto;
   padding: 13px 28px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-family: var(--font-mono);
   text-align: center;
   color: var(--navy);
   border: 1.5px solid var(--navy);
@@ -210,18 +230,24 @@
 
 .btn:hover {
   background: var(--navy);
-  color: #fff;
+  color: var(--ivory-100);
+  --gold: var(--gold-light);
+  --btn-on-gold: var(--ink-900);
+  --text: var(--ivory-100);
+  --text-mid: #B9B4A9;
+  --text-light: #A9A498;
+  --border: rgba(246, 241, 231, 0.18);
 }
 
 .btnFeatured {
   background: var(--gold);
   border-color: var(--gold);
-  color: #fff;
+  color: var(--btn-on-gold, var(--ivory-100));
 }
 
 .btnFeatured:hover {
-  background: var(--gold-light);
-  border-color: var(--gold-light);
+  background: var(--gold); filter: brightness(1.12);
+  border-color: var(--gold);
   color: var(--navy);
 }
 
